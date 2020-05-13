@@ -21,8 +21,9 @@ grad = zeros(size(theta));
 
 
 error = X*theta - y;
-J = ( error'*error + lambda*theta'*theta )/(2*m);
+# bias are excluded
 grad_theta = [0 ; theta(2:end , :)];
+J = ( error'*error + lambda*grad_theta'*grad_theta )/(2*m);
 grad = (X'*error + lambda*grad_theta)/m; 
 
 % =========================================================================
